@@ -1,0 +1,400 @@
+/* ============================================
+   HUMARA PANDIT — Multi-Step Form
+   ============================================ */
+
+.form-section {
+  padding-top: 80px;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ─── Section Header ─── */
+.form-header {
+  text-align: center;
+  margin-bottom: var(--sp-2xl);
+}
+
+.form-header h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--sp-sm);
+}
+
+.form-header p {
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+}
+
+/* ─── Progress Steps ─── */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: var(--sp-2xl);
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.progress-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  transition: all var(--t-normal) var(--ease-out);
+  position: relative;
+}
+
+.progress-dot.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.progress-dot.completed {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.progress-line {
+  width: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width var(--t-slow) var(--ease-out);
+}
+
+.progress-line.filled::after {
+  width: 100%;
+}
+
+.progress-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-xs);
+  text-align: center;
+  letter-spacing: 0.05em;
+  position: absolute;
+  bottom: -22px;
+  white-space: nowrap;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.progress-dot.active .progress-label,
+.progress-dot.completed .progress-label {
+  color: var(--gold-light);
+}
+
+/* ─── Form Card ─── */
+.form-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Steps ─── */
+.form-step {
+  display: none;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.form-step.active {
+  display: flex;
+  animation: fadeInUp 0.4s var(--ease-out) forwards;
+}
+
+.form-step-title {
+  font-size: var(--fs-h3);
+  font-family: var(--font-heading);
+  margin-bottom: var(--sp-sm);
+  color: var(--gold-light);
+}
+
+.form-step-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  margin-bottom: var(--sp-md);
+}
+
+/* ─── Form Groups ─── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.form-label {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: var(--sp-md) var(--sp-lg);
+  font-size: var(--fs-body);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--t-fast);
+  font-family: var(--font-body);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23f0d78c' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* ─── Zodiac Preview (auto-detected) ─── */
+.zodiac-preview {
+  display: none;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-md);
+  margin-top: var(--sp-sm);
+}
+
+.zodiac-preview.visible {
+  display: flex;
+  animation: fadeInScale 0.3s var(--ease-out);
+}
+
+.zodiac-preview-symbol {
+  font-size: 2rem;
+}
+
+.zodiac-preview-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.zodiac-preview-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--gold-light);
+  font-size: var(--fs-body);
+}
+
+.zodiac-preview-dates {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Gender Radio Buttons ─── */
+.radio-group {
+  display: flex;
+  gap: var(--sp-md);
+}
+
+.radio-option {
+  flex: 1;
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+.radio-option input[type="radio"]:checked + label {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-light);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.radio-option label:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Goal Selection Grid ─── */
+.goal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-md);
+}
+
+.goal-option {
+  padding: var(--sp-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--t-normal) var(--ease-out);
+  text-align: center;
+}
+
+.goal-option:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.goal-option.selected {
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+}
+
+.goal-option-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--sp-sm);
+  display: block;
+}
+
+.goal-option-label {
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-xs);
+}
+
+.goal-option-desc {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.goal-option.selected .goal-option-label {
+  color: var(--gold-light);
+}
+
+/* ─── Navigation Buttons ─── */
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--sp-lg);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-nav .btn {
+  min-width: 140px;
+}
+
+.btn-back {
+  visibility: hidden;
+}
+
+.btn-back.visible {
+  visibility: visible;
+}
+
+/* ─── Validation Error ─── */
+.form-error {
+  color: #ef4444;
+  font-size: var(--fs-xs);
+  margin-top: var(--sp-xs);
+  display: none;
+}
+
+.form-error.visible {
+  display: block;
+  animation: fadeIn 0.2s var(--ease-out);
+}
+
+.form-input.error,
+.form-select.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .form-wrapper {
+    max-width: 100%;
+  }
+
+  .goal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .progress-line {
+    width: 30px;
+  }
+
+  .progress-label {
+    display: none;
+  }
+}

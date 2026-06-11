@@ -1,0 +1,1099 @@
+/* ============================================
+   HUMARA PANDIT — Design System
+   Vedic Astrology Gemstone Recommendation App
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+/* ─────────────── Custom Properties ─────────────── */
+:root {
+  /* Cosmic Palette */
+  --bg-primary: #050510;
+  --bg-secondary: #0a0a1a;
+  --bg-tertiary: #0f0f2a;
+  --bg-card: rgba(15, 15, 35, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-hover: rgba(255, 255, 255, 0.08);
+  --bg-glass-active: rgba(255, 255, 255, 0.12);
+
+  /* Gold Spectrum */
+  --gold: #d4af37;
+  --gold-light: #f0d78c;
+  --gold-dark: #a68a2a;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+
+  /* Purple Spectrum */
+  --purple: #7b2d8e;
+  --purple-light: #a855f7;
+  --purple-dark: #4a1259;
+  --purple-glow: rgba(168, 85, 247, 0.25);
+
+  /* Accent Colors */
+  --blue-deep: #1e3a5f;
+  --blue-light: #4a90d9;
+  --cyan: #06b6d4;
+  --rose: #e0115f;
+
+  /* Text */
+  --text-primary: #f0ebe3;
+  --text-secondary: rgba(240, 235, 227, 0.65);
+  --text-muted: rgba(240, 235, 227, 0.35);
+  --text-gold: var(--gold-light);
+
+  /* Borders */
+  --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+  --border-gold: 1px solid rgba(212, 175, 55, 0.25);
+  --border-gold-bright: 1px solid rgba(212, 175, 55, 0.5);
+
+  /* Typography */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-hindi: 'Noto Sans Devanagari', sans-serif;
+
+  --fs-hero: clamp(2.5rem, 6vw, 5rem);
+  --fs-h1: clamp(1.8rem, 4vw, 3.2rem);
+  --fs-h2: clamp(1.4rem, 3vw, 2.2rem);
+  --fs-h3: clamp(1.1rem, 2vw, 1.5rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* Spacing */
+  --sp-xs: 0.25rem;
+  --sp-sm: 0.5rem;
+  --sp-md: 1rem;
+  --sp-lg: 1.5rem;
+  --sp-xl: 2rem;
+  --sp-2xl: 3rem;
+  --sp-3xl: 4rem;
+  --sp-4xl: 6rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-gold: 0 0 30px var(--gold-glow);
+  --shadow-glow-purple: 0 0 30px var(--purple-glow);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 0.15s;
+  --t-normal: 0.3s;
+  --t-slow: 0.5s;
+  --t-slower: 0.8s;
+
+  /* Gemstone Colors */
+  --gem-ruby: #e0115f;
+  --gem-pearl: #f5f0e1;
+  --gem-coral: #ff4500;
+  --gem-emerald: #50c878;
+  --gem-yellow-sapphire: #f0c75e;
+  --gem-diamond: #b9f2ff;
+  --gem-blue-sapphire: #2856d4;
+  --gem-hessonite: #d4710a;
+  --gem-cats-eye: #8b8b2a;
+}
+
+/* ─────────────── Reset ─────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ─────────────── Typography ─────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--purple-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold { color: var(--gold-light); }
+.text-muted { color: var(--text-secondary); }
+
+/* ─────────────── Section System ─────────────── */
+.section {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: var(--sp-xl);
+}
+
+.section.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────── Cosmic Background ─────────────── */
+.cosmic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 15% 85%, rgba(123, 45, 142, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(30, 58, 95, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(42, 26, 88, 0.1) 0%, transparent 40%),
+    var(--bg-primary);
+}
+
+/* ─────────────── Starfield (CSS-only) ─────────────── */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.stars-layer--small {
+  background-image:
+    radial-gradient(1px 1px at 50px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 150px 200px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 300px 50px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 420px 300px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 600px 120px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 780px 400px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90px 450px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 250px 550px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 500px 600px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 700px 250px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 850px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 1000px 350px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 1100px 500px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 180px 700px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 400px 780px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 650px 680px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 950px 600px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 1200px 150px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 1350px 400px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 1100px 700px, rgba(255,255,255,0.6), transparent);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars-layer--medium {
+  background-image:
+    radial-gradient(1.5px 1.5px at 120px 160px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 380px 420px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 550px 100px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 720px 500px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 900px 200px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 200px 380px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 1050px 100px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 650px 550px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 1200px 300px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 350px 680px, rgba(255,255,255,0.7), transparent);
+  animation: twinkle 5s ease-in-out 1s infinite alternate;
+}
+
+.stars-layer--large {
+  background-image:
+    radial-gradient(2px 2px at 200px 100px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 600px 350px, rgba(212,175,55,0.7), transparent),
+    radial-gradient(2px 2px at 1000px 150px, rgba(168,85,247,0.6), transparent),
+    radial-gradient(2px 2px at 450px 550px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 850px 600px, rgba(212,175,55,0.6), transparent),
+    radial-gradient(2px 2px at 100px 500px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2.5px 2.5px at 1300px 250px, rgba(168,85,247,0.5), transparent);
+  animation: twinkle 6s ease-in-out 2s infinite alternate;
+}
+
+/* ─────────────── Glassmorphism ─────────────── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+.glass-card {
+  background: rgba(12, 12, 35, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 50%,
+    rgba(212, 175, 55, 0.02) 100%
+  );
+  pointer-events: none;
+}
+
+/* ─────────────── Buttons ─────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--sp-md) var(--sp-2xl);
+  cursor: pointer;
+  transition: all var(--t-normal) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity var(--t-fast);
+}
+
+.btn:hover::after { opacity: 1; }
+
+.btn-primary {
+  font-size: var(--fs-body);
+  color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow-gold), 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  font-size: var(--fs-small);
+  color: var(--gold-light);
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  font-size: var(--fs-small);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  font-size: 1.2rem;
+}
+
+/* ─────────────── Gemstone Orbs (CSS-only visuals) ─────────────── */
+.gemstone-orb {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gemstone-orb::before {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 18%;
+  width: 35%;
+  height: 25%;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  filter: blur(3px);
+  transform: rotate(-25deg);
+}
+
+.gemstone-orb::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+/* Gemstone Variants */
+.gem-ruby {
+  background: radial-gradient(circle at 35% 35%, #ff6b8a, #e0115f 40%, #9b0a3a 80%, #5c0620);
+  box-shadow: 0 0 40px rgba(224, 17, 95, 0.4), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+.gem-pearl {
+  background: radial-gradient(circle at 35% 35%, #ffffff, #f5f0e1 40%, #e8dcc8 70%, #c9bea8);
+  box-shadow: 0 0 40px rgba(245, 240, 225, 0.3), inset 0 -5px 15px rgba(0,0,0,0.1);
+}
+.gem-coral {
+  background: radial-gradient(circle at 35% 35%, #ff8c66, #ff4500 40%, #cc3700 75%, #8b2500);
+  box-shadow: 0 0 40px rgba(255, 69, 0, 0.35), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+.gem-emerald {
+  background: radial-gradient(circle at 35% 35%, #90eeb5, #50c878 40%, #2d8c52 75%, #0d5c2e);
+  box-shadow: 0 0 40px rgba(80, 200, 120, 0.35), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+.gem-yellow-sapphire {
+  background: radial-gradient(circle at 35% 35%, #ffe599, #f0c75e 40%, #d4a420 75%, #9a7710);
+  box-shadow: 0 0 40px rgba(240, 199, 94, 0.4), inset 0 -5px 15px rgba(0,0,0,0.2);
+}
+.gem-diamond {
+  background: radial-gradient(circle at 35% 35%, #ffffff, #e8f4f8 30%, #b9f2ff 55%, #88d8e8 80%, #5fb8cc);
+  box-shadow: 0 0 40px rgba(185, 242, 255, 0.35), inset 0 -5px 15px rgba(0,0,0,0.1);
+}
+.gem-blue-sapphire {
+  background: radial-gradient(circle at 35% 35%, #6a9fff, #2856d4 40%, #1a3a8c 75%, #0c1f52);
+  box-shadow: 0 0 40px rgba(40, 86, 212, 0.4), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+.gem-hessonite {
+  background: radial-gradient(circle at 35% 35%, #ffb366, #d4710a 40%, #a05508 75%, #6b3804);
+  box-shadow: 0 0 40px rgba(212, 113, 10, 0.35), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+.gem-cats-eye {
+  background: radial-gradient(circle at 35% 35%, #c8c85a, #8b8b2a 40%, #656520 75%, #3d3d12);
+  box-shadow: 0 0 40px rgba(139, 139, 42, 0.3), inset 0 -5px 15px rgba(0,0,0,0.3);
+}
+
+/* Cat's Eye special slit effect */
+.gem-cats-eye::before {
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 8%;
+  border-radius: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 40%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.7) 60%,
+    transparent 100%
+  );
+  transform: rotate(0deg);
+  filter: blur(1px);
+}
+
+.gemstone-orb.large {
+  width: 180px;
+  height: 180px;
+}
+
+.gemstone-orb.xl {
+  width: 220px;
+  height: 220px;
+}
+
+.gemstone-orb.small {
+  width: 80px;
+  height: 80px;
+}
+
+/* ─────────────── Navigation ─────────────── */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-md) var(--sp-xl);
+  background: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform var(--t-normal) var(--ease-out);
+}
+
+.main-nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.nav-logo-icon {
+  font-size: 1.4rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--sp-xl);
+}
+
+.nav-link {
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  transition: color var(--t-fast);
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold-light);
+}
+
+/* ─────────────── Scrollbar ─────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* ─────────────── Utilities ─────────────── */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: var(--sp-lg) auto;
+}
+
+.btn-sm {
+  padding: var(--sp-sm) var(--sp-md);
+  font-size: var(--fs-xs);
+}
+
+/* ─────────────── Canvas Particle System ─────────────── */
+.particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ─────────────── Hamburger Menu ─────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  cursor: pointer;
+  z-index: 110;
+  transition: border-color var(--t-fast);
+}
+
+.hamburger:hover { border-color: var(--gold); }
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--gold-light);
+  border-radius: 2px;
+  transition: all var(--t-normal) var(--ease-out);
+  transform-origin: center;
+}
+
+.hamburger.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─────────────── Scroll Reveal ─────────────── */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────── Toast ─────────────── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  padding: var(--sp-md) var(--sp-xl);
+  background: rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-xl);
+  color: var(--gold-light);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  z-index: 2000;
+  opacity: 0;
+  transition: all var(--t-normal) var(--ease-out);
+  pointer-events: none;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─────────────── Hero Testimonials ─────────────── */
+.hero-testimonials {
+  display: flex;
+  gap: var(--sp-lg);
+  margin-top: var(--sp-3xl);
+  max-width: 900px;
+  width: 100%;
+}
+
+.testimonial-card {
+  flex: 1;
+  padding: var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.testimonial-text {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  margin-top: auto;
+}
+
+.testimonial-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 55, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.testimonial-name {
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--text-primary);
+}
+
+.testimonial-sign {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ─────────────── Results Hero Grid ─────────────── */
+.results-hero-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--sp-2xl);
+  margin-bottom: var(--sp-2xl);
+  align-items: start;
+}
+
+.zodiac-wheel-container {
+  text-align: center;
+}
+
+.zodiac-wheel-title {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-lg);
+}
+
+.zodiac-wheel {
+  display: flex;
+  justify-content: center;
+}
+
+.zodiac-wheel-svg {
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.1));
+}
+
+/* ─────────────── Compatibility Section ─────────────── */
+.compatibility-section { margin-bottom: var(--sp-2xl); }
+
+.compat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-lg);
+}
+
+.compat-group {
+  padding: var(--sp-lg);
+  border-radius: var(--radius-lg);
+}
+
+.compat-good { background: rgba(80, 200, 120, 0.05); border: 1px solid rgba(80, 200, 120, 0.12); }
+.compat-bad  { background: rgba(239, 68, 68, 0.05);  border: 1px solid rgba(239, 68, 68, 0.12); }
+
+.compat-label {
+  font-family: var(--font-heading);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-bottom: var(--sp-md);
+  letter-spacing: 0.03em;
+}
+
+.compat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.compat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: var(--sp-xs) var(--sp-md);
+  border-radius: var(--radius-xl);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+.compat-chip--good {
+  background: rgba(80, 200, 120, 0.1);
+  color: #6ee7a0;
+  border: 1px solid rgba(80, 200, 120, 0.2);
+}
+
+.compat-chip--bad {
+  background: rgba(239, 68, 68, 0.08);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.compat-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─────────────── Disclaimer ─────────────── */
+.disclaimer {
+  margin-top: var(--sp-3xl);
+  padding: var(--sp-lg);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.disclaimer p {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ─────────────── Last Recommendation Banner ─────────────── */
+.last-rec-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  margin-top: var(--sp-xl);
+  border-color: rgba(212, 175, 55, 0.15);
+}
+
+.last-rec-icon { font-size: 1.3rem; }
+
+.last-rec-text {
+  flex: 1;
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+/* ─────────────── About Section ─────────────── */
+.about-section { padding-top: 80px; padding-bottom: var(--sp-4xl); }
+
+.about-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: var(--sp-3xl);
+}
+
+.about-header h2 { font-size: var(--fs-h1); margin-bottom: var(--sp-sm); }
+.about-header p { max-width: 500px; margin: 0 auto; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-xl);
+  margin-bottom: var(--sp-3xl);
+}
+
+.about-card {
+  padding: var(--sp-2xl);
+  text-align: center;
+  transition: transform var(--t-normal) var(--ease-out), border-color var(--t-normal);
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.15);
+}
+
+.about-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-lg);
+  display: block;
+}
+
+.about-card h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-md);
+  color: var(--gold-light);
+}
+
+.about-card p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+
+.about-cta {
+  text-align: center;
+  margin-top: var(--sp-3xl);
+}
+
+/* ─────────────── Navagraha Grid ─────────────── */
+.navagraha-section { margin-bottom: var(--sp-3xl); }
+
+.navagraha-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: var(--sp-md);
+}
+
+.navagraha-item {
+  text-align: center;
+  padding: var(--sp-lg) var(--sp-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  transition: all var(--t-normal) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.navagraha-item:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navagraha-symbol { font-size: 1.8rem; }
+.navagraha-name {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.navagraha-sanskrit {
+  font-family: var(--font-hindi);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ─────────────── Footer ─────────────── */
+.site-footer {
+  background: rgba(5, 5, 16, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--sp-4xl) var(--sp-xl) 0;
+  display: none;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--sp-3xl);
+  padding-bottom: var(--sp-3xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: 1.3rem;
+  margin-bottom: var(--sp-md);
+}
+
+.footer-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+}
+
+.footer-tagline {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.footer-links h4 {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: var(--sp-md);
+  letter-spacing: 0.05em;
+}
+
+.footer-link {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  padding: var(--sp-xs) 0;
+  cursor: pointer;
+  transition: color var(--t-fast);
+}
+
+.footer-link:hover { color: var(--gold-light); }
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--sp-xl) 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ─────────────── Responsive ─────────────── */
+@media (max-width: 768px) {
+  :root {
+    --sp-xl: 1.25rem;
+    --sp-2xl: 2rem;
+    --sp-3xl: 2.5rem;
+  }
+
+  /* Hamburger shows on mobile */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 60px;
+    background: rgba(5, 5, 16, 0.97);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2xl);
+    z-index: 99;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .nav-links.mobile-open .nav-link {
+    font-size: var(--fs-h3);
+    font-family: var(--font-heading);
+    letter-spacing: 0.1em;
+  }
+
+  .glass-card {
+    padding: var(--sp-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .gemstone-orb.xl { width: 160px; height: 160px; }
+
+  /* Results grid stacks */
+  .results-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zodiac-wheel-container { order: 2; }
+
+  /* About grid */
+  .about-grid { grid-template-columns: 1fr; }
+
+  /* Navagraha grid */
+  .navagraha-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Testimonials */
+  .hero-testimonials {
+    flex-direction: column;
+    gap: var(--sp-md);
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-xl);
+  }
+
+  /* Compatibility */
+  .compat-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sp-xl: 1rem;
+    --sp-2xl: 1.5rem;
+  }
+
+  .btn {
+    padding: var(--sp-sm) var(--sp-lg);
+    font-size: var(--fs-small);
+  }
+
+  .gemstone-orb.xl { width: 130px; height: 130px; }
+  .gemstone-orb.large { width: 120px; height: 120px; }
+
+  .navagraha-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--sp-lg);
+  }
+
+  .hero-stats {
+    flex-direction: row;
+    gap: var(--sp-xl);
+  }
+}

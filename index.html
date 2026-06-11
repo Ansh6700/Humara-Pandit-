@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humara Pandit — Vedic Gemstone Recommendation | Discover Your Cosmic Gemstone</title>
+  <meta name="description" content="Discover your perfect gemstone based on Vedic astrology. Get personalized Navaratna gemstone recommendations using your zodiac sign, nakshatra, and planetary alignment.">
+  <meta name="keywords" content="gemstone recommendation, vedic astrology, navaratna, zodiac gemstone, jyotish, manik, moti, panna, pukhraj, neelam, humara pandit">
+  <meta property="og:title" content="Humara Pandit — Vedic Gemstone Recommendation">
+  <meta property="og:description" content="Discover the gemstone that aligns with your stars. Personalized recommendations based on ancient Vedic wisdom.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050510">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/index.css?v=2">
+  <link rel="stylesheet" href="css/animations.css?v=2">
+  <link rel="stylesheet" href="css/hero.css?v=2">
+  <link rel="stylesheet" href="css/form.css?v=2">
+  <link rel="stylesheet" href="css/results.css?v=2">
+  <link rel="stylesheet" href="css/explorer.css?v=2">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+</head>
+<body>
+
+  <!-- ════════════ Canvas Particle System ════════════ -->
+  <canvas id="particle-canvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- ════════════ Cosmic Background ════════════ -->
+  <div class="cosmic-bg" aria-hidden="true"></div>
+  <div class="shooting-star" aria-hidden="true"></div>
+  <div class="shooting-star" aria-hidden="true"></div>
+  <div class="shooting-star" aria-hidden="true"></div>
+
+  <!-- ════════════ Navigation ════════════ -->
+  <nav class="main-nav nav-hidden" id="main-nav" aria-label="Main navigation">
+    <div class="nav-logo" data-navigate="hero" style="cursor:pointer">
+      <span class="nav-logo-icon">💎</span>
+      <span>Humara Pandit</span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" data-navigate="hero">Home</a>
+      <a class="nav-link" data-navigate="form">Get Recommendation</a>
+      <a class="nav-link" data-navigate="explorer">Explore Gemstones</a>
+      <a class="nav-link" data-navigate="about">About</a>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- ════════════ HERO SECTION ════════════ -->
+  <section id="hero-section" class="section active">
+    <div class="hero">
+      <!-- Floating decorative gems -->
+      <div class="hero-floating-gems" aria-hidden="true">
+        <div class="hero-gem"></div>
+        <div class="hero-gem"></div>
+        <div class="hero-gem"></div>
+        <div class="hero-gem"></div>
+        <div class="hero-gem"></div>
+        <div class="hero-gem"></div>
+      </div>
+
+      <!-- Brand -->
+      <div class="hero-brand">
+        <span class="hero-brand-icon">💎</span>
+        <div class="hero-brand-name">Humara Pandit</div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="hero-title text-gradient">
+        Discover the Gemstone That Aligns With Your Stars
+      </h1>
+
+      <p class="hero-subtitle">
+        Ancient Vedic wisdom meets modern insight. Enter your birth details and unveil the Navaratna gemstone destined to amplify your cosmic energy.
+      </p>
+
+      <!-- CTA -->
+      <div class="hero-cta">
+        <button class="btn btn-primary" data-navigate="form" id="hero-cta-btn">
+          ✨ Begin Your Journey
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">9</div>
+          <div class="hero-stat-label">Navaratna Gems</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">12</div>
+          <div class="hero-stat-label">Zodiac Signs</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">27</div>
+          <div class="hero-stat-label">Nakshatras</div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="hero-testimonials reveal-on-scroll">
+        <div class="testimonial-card glass">
+          <p class="testimonial-text">"The Yellow Sapphire recommendation changed my career trajectory completely. Truly aligned with my Jupiter energy."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar">♐</span>
+            <div>
+              <div class="testimonial-name">Arjun M.</div>
+              <div class="testimonial-sign">Sagittarius</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <p class="testimonial-text">"I was skeptical, but wearing the recommended Pearl brought so much emotional clarity and peace. Amazing accuracy!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar">♋</span>
+            <div>
+              <div class="testimonial-name">Priya S.</div>
+              <div class="testimonial-sign">Cancer</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <p class="testimonial-text">"The compatibility insights helped me avoid a wrong gemstone combination. Professional-grade astrological analysis!"</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar">♑</span>
+            <div>
+              <div class="testimonial-name">Vikram R.</div>
+              <div class="testimonial-sign">Capricorn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FORM SECTION ════════════ -->
+  <section id="form-section" class="section form-section">
+    <div class="form-wrapper">
+      <div class="form-header">
+        <h2 class="text-gradient">Your Cosmic Profile</h2>
+        <p class="text-muted">Share your birth details to receive a personalized gemstone recommendation</p>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-step">
+          <div class="progress-dot active" id="progress-dot-1">
+            1
+            <span class="progress-label">Birth Details</span>
+          </div>
+        </div>
+        <div class="progress-line" id="progress-line-1"></div>
+        <div class="progress-step">
+          <div class="progress-dot" id="progress-dot-2">
+            2
+            <span class="progress-label">Preferences</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card form-card">
+        <form id="birth-form" autocomplete="off">
+
+          <!-- Step 1 -->
+          <div class="form-step active" id="step-1">
+            <div class="form-step-title">Birth Details</div>
+            <div class="form-step-subtitle">Your name and date of birth reveal your zodiac sign</div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-name">Full Name</label>
+              <input type="text" class="form-input" id="input-name" placeholder="Enter your full name" required>
+              <span class="form-error" id="error-name"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-dob">Date of Birth</label>
+              <input type="date" class="form-input" id="input-dob" required>
+              <span class="form-error" id="error-dob"></span>
+            </div>
+
+            <div class="zodiac-preview" id="zodiac-preview">
+              <span class="zodiac-preview-symbol"></span>
+              <div class="zodiac-preview-info">
+                <span class="zodiac-preview-name"></span>
+                <span class="zodiac-preview-dates"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="form-step" id="step-2">
+            <div class="form-step-title">Your Preferences</div>
+            <div class="form-step-subtitle">Help us refine your recommendation</div>
+
+            <div class="form-group">
+              <label class="form-label">Gender</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" name="gender" value="male" id="gender-male">
+                  <label for="gender-male">🙋‍♂️ Male</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="gender" value="female" id="gender-female">
+                  <label for="gender-female">🙋‍♀️ Female</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" name="gender" value="other" id="gender-other">
+                  <label for="gender-other">🌟 Other</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Primary Concern / Goal</label>
+              <div class="goal-grid">
+                <div class="goal-option" data-goal="wealth">
+                  <span class="goal-option-icon">💰</span>
+                  <div class="goal-option-label">Wealth & Prosperity</div>
+                  <div class="goal-option-desc">Financial growth, business success</div>
+                </div>
+                <div class="goal-option" data-goal="health">
+                  <span class="goal-option-icon">🌿</span>
+                  <div class="goal-option-label">Health & Vitality</div>
+                  <div class="goal-option-desc">Physical strength, energy, healing</div>
+                </div>
+                <div class="goal-option" data-goal="love">
+                  <span class="goal-option-icon">💗</span>
+                  <div class="goal-option-label">Love & Relationships</div>
+                  <div class="goal-option-desc">Romance, marriage, harmony</div>
+                </div>
+                <div class="goal-option" data-goal="career">
+                  <span class="goal-option-icon">⚡</span>
+                  <div class="goal-option-label">Career & Authority</div>
+                  <div class="goal-option-desc">Leadership, recognition, growth</div>
+                </div>
+                <div class="goal-option" data-goal="spiritual">
+                  <span class="goal-option-icon">🔮</span>
+                  <div class="goal-option-label">Spirituality & Wisdom</div>
+                  <div class="goal-option-desc">Inner peace, meditation, moksha</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost btn-back" id="btn-back">← Back</button>
+            <button type="button" class="btn btn-primary" id="btn-next">Continue →</button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Last Recommendation Banner -->
+      <div class="last-rec-banner glass" id="last-rec-banner" style="display:none;">
+        <span class="last-rec-icon">🕐</span>
+        <div class="last-rec-text">
+          <strong id="last-rec-name"></strong> — your last recommendation was <strong id="last-rec-gem"></strong>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="btn-view-last">View Again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ RESULTS SECTION ════════════ -->
+  <section id="results-section" class="section results-section">
+    <div class="results-wrapper">
+
+      <!-- Analysis Animation -->
+      <div class="analysis-screen" id="analysis-screen" style="display: none;">
+        <div class="orbit-system">
+          <div class="orbit-center"></div>
+          <div class="orbit-ring"><div class="orbit-planet"></div></div>
+          <div class="orbit-ring"><div class="orbit-planet"></div></div>
+          <div class="orbit-ring"><div class="orbit-planet"></div></div>
+        </div>
+        <div>
+          <div class="analysis-text">Reading the stars...</div>
+          <div class="analysis-sub-text text-muted">Analyzing your birth chart and planetary positions</div>
+        </div>
+        <div class="loading-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Results Content -->
+      <div id="results-content" class="results-content">
+
+        <div class="results-header">
+          <p class="results-greeting" id="results-greeting"></p>
+          <h2 class="results-title text-gradient">Your Recommended Gemstone</h2>
+          <div class="divider"></div>
+        </div>
+
+        <!-- Zodiac Wheel + Gemstone Hero side-by-side -->
+        <div class="results-hero-grid">
+          <!-- Zodiac Wheel -->
+          <div class="zodiac-wheel-container reveal-on-scroll">
+            <h3 class="zodiac-wheel-title">Your Zodiac Position</h3>
+            <div id="zodiac-wheel" class="zodiac-wheel"></div>
+          </div>
+
+          <!-- Primary Gemstone -->
+          <div class="glass-card gemstone-hero">
+            <div class="gemstone-hero-badge">
+              <span>✨</span> Primary Recommendation
+            </div>
+            <div class="gemstone-orb xl gemstone-hero-orb" id="hero-gem-orb"></div>
+            <h2 class="gemstone-hero-name" id="hero-gem-name"></h2>
+            <p class="gemstone-hero-hindi" id="hero-gem-hindi"></p>
+            <div class="gemstone-hero-planet">
+              <span class="planet-symbol" id="hero-gem-planet-symbol"></span>
+              <span id="hero-gem-planet-name"></span>
+            </div>
+            <p class="gemstone-hero-description" id="hero-gem-description"></p>
+          </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="info-grid reveal-on-scroll">
+          <div class="glass info-card">
+            <span class="info-card-icon" id="info-zodiac-icon"></span>
+            <div class="info-card-label">Zodiac Sign</div>
+            <div class="info-card-value" id="info-zodiac-value"></div>
+          </div>
+          <div class="glass info-card">
+            <span class="info-card-icon" id="info-nakshatra-icon"></span>
+            <div class="info-card-label">Nakshatra</div>
+            <div class="info-card-value" id="info-nakshatra-value"></div>
+          </div>
+          <div class="glass info-card">
+            <span class="info-card-icon" id="info-element-icon"></span>
+            <div class="info-card-label">Element</div>
+            <div class="info-card-value" id="info-element-value"></div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="benefits-section reveal-on-scroll">
+          <h3 class="section-title">
+            <span class="section-title-icon">✦</span>
+            Key Benefits
+          </h3>
+          <div class="benefits-list" id="benefits-list"></div>
+        </div>
+
+        <!-- Wearing Instructions -->
+        <div class="wearing-section reveal-on-scroll">
+          <h3 class="section-title">
+            <span class="section-title-icon">📿</span>
+            How to Wear
+          </h3>
+          <div class="wearing-grid" id="wearing-grid"></div>
+        </div>
+
+        <!-- Mantra -->
+        <div class="glass-card mantra-card reveal-on-scroll">
+          <div class="mantra-label">Energization Mantra — Chant 108 Times</div>
+          <div class="mantra-text" id="mantra-hindi"></div>
+          <div class="mantra-transliteration" id="mantra-translit"></div>
+        </div>
+
+        <!-- Gemstone Compatibility -->
+        <div class="compatibility-section reveal-on-scroll">
+          <h3 class="section-title">
+            <span class="section-title-icon">🔗</span>
+            Gemstone Compatibility
+          </h3>
+          <div id="compatibility-container"></div>
+        </div>
+
+        <!-- Secondary Gemstone -->
+        <div class="secondary-section reveal-on-scroll" id="secondary-section">
+          <h3 class="section-title">
+            <span class="section-title-icon">🔄</span>
+            Alternative Gemstone
+          </h3>
+          <div class="glass-card secondary-card">
+            <div class="gemstone-orb" id="secondary-gem-orb"></div>
+            <div class="secondary-info">
+              <h4 id="secondary-gem-name"></h4>
+              <p id="secondary-gem-desc"></p>
+              <div class="secondary-badge" id="secondary-gem-planet"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="results-actions">
+          <button class="btn btn-ghost" data-navigate="form">🔄 Try Again</button>
+          <button class="btn btn-secondary" id="btn-share">📤 Share Results</button>
+          <button class="btn btn-primary" data-navigate="explorer">💎 Explore All Gemstones</button>
+        </div>
+
+        <!-- Certified Badge -->
+        <div class="disclaimer reveal-on-scroll" style="border-color: rgba(80,200,120,0.15); background: rgba(80,200,120,0.03);">
+          <p>✅ <strong>Certified Recommendations:</strong> All gemstone suggestions are curated and verified by certified Vedic astrologers (Jyotish Acharyas) following authentic Ratna Shastra principles and traditional Navagraha gemstone mapping.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ EXPLORER SECTION ════════════ -->
+  <section id="explorer-section" class="section explorer-section">
+    <div class="explorer-wrapper">
+      <div class="explorer-header">
+        <h2 class="text-gradient">The Navaratna Collection</h2>
+        <p class="text-muted">Explore the nine sacred gemstones of Vedic astrology</p>
+        <div class="divider"></div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Gems</button>
+        <button class="filter-btn" data-filter="Fire">🔥 Fire</button>
+        <button class="filter-btn" data-filter="Water">🌊 Water</button>
+        <button class="filter-btn" data-filter="Earth">🌍 Earth</button>
+        <button class="filter-btn" data-filter="Air">💨 Air</button>
+        <button class="filter-btn" data-filter="Ether">✨ Ether</button>
+      </div>
+
+      <div class="gemstone-grid" id="gemstone-grid"></div>
+
+      <div class="explorer-nav">
+        <button class="btn btn-primary" data-navigate="form">✨ Get Your Recommendation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ ABOUT SECTION ════════════ -->
+  <section id="about-section" class="section about-section">
+    <div class="about-wrapper">
+      <div class="about-header">
+        <h2 class="text-gradient">About Humara Pandit</h2>
+        <p class="text-muted">The science and wisdom behind your recommendation</p>
+        <div class="divider"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card glass-card reveal-on-scroll">
+          <div class="about-card-icon">📜</div>
+          <h3>Ancient Vedic Wisdom</h3>
+          <p>Our recommendations are rooted in the <strong>Ratna Shastra</strong> — the ancient Vedic science of gemology dating back over 5,000 years. Each gemstone corresponds to one of the nine celestial bodies (Navagraha) in Jyotish astrology.</p>
+        </div>
+
+        <div class="about-card glass-card reveal-on-scroll">
+          <div class="about-card-icon">⚙️</div>
+          <h3>How It Works</h3>
+          <p>We analyze your <strong>birth date → zodiac sign → ruling planet → nakshatra</strong> to determine which gemstone resonates with your cosmic energy. Your life goals further refine the recommendation for maximum alignment.</p>
+        </div>
+
+        <div class="about-card glass-card reveal-on-scroll">
+          <div class="about-card-icon">🔮</div>
+          <h3>The Navaratna System</h3>
+          <p>The <strong>nine sacred gemstones</strong> — Ruby, Pearl, Red Coral, Emerald, Yellow Sapphire, Diamond, Blue Sapphire, Hessonite, and Cat's Eye — each channel the energy of their ruling planet to benefit the wearer.</p>
+        </div>
+
+        <div class="about-card glass-card reveal-on-scroll">
+          <div class="about-card-icon">🛡️</div>
+          <h3>Planetary Compatibility</h3>
+          <p>Not all gemstones work well together. Our system follows the traditional <strong>planetary friendship model</strong> — Sun-Jupiter-Mars-Moon vs Saturn-Mercury-Venus — to ensure your gemstones harmonize, not conflict.</p>
+        </div>
+      </div>
+
+      <!-- Navagraha Planets Display -->
+      <div class="navagraha-section reveal-on-scroll">
+        <h3 class="text-center" style="margin-bottom: var(--sp-2xl); font-size: var(--fs-h2);">
+          The Nine Celestial Bodies
+        </h3>
+        <div class="navagraha-grid">
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #f39c12">☉</span>
+            <span class="navagraha-name">Sun</span>
+            <span class="navagraha-sanskrit">सूर्य</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #bdc3c7">☽</span>
+            <span class="navagraha-name">Moon</span>
+            <span class="navagraha-sanskrit">चन्द्र</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #e74c3c">♂</span>
+            <span class="navagraha-name">Mars</span>
+            <span class="navagraha-sanskrit">मंगल</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #2ecc71">☿</span>
+            <span class="navagraha-name">Mercury</span>
+            <span class="navagraha-sanskrit">बुध</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #f1c40f">♃</span>
+            <span class="navagraha-name">Jupiter</span>
+            <span class="navagraha-sanskrit">बृहस्पति</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #e91e8c">♀</span>
+            <span class="navagraha-name">Venus</span>
+            <span class="navagraha-sanskrit">शुक्र</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #3498db">♄</span>
+            <span class="navagraha-name">Saturn</span>
+            <span class="navagraha-sanskrit">शनि</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #d4710a">☊</span>
+            <span class="navagraha-name">Rahu</span>
+            <span class="navagraha-sanskrit">राहु</span>
+          </div>
+          <div class="navagraha-item">
+            <span class="navagraha-symbol" style="color: #8b8b2a">☋</span>
+            <span class="navagraha-name">Ketu</span>
+            <span class="navagraha-sanskrit">केतु</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-cta reveal-on-scroll">
+        <button class="btn btn-primary" data-navigate="form">✨ Discover Your Gemstone</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ Gemstone Detail Modal ════════════ -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Gemstone details">
+    <div class="glass-card modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      <div class="modal-header">
+        <div class="gemstone-orb large modal-orb" id="modal-gem-orb"></div>
+        <div class="modal-title-group">
+          <h3 id="modal-gem-name"></h3>
+          <p class="modal-hindi" id="modal-gem-hindi"></p>
+          <p class="modal-planet" id="modal-gem-planet"></p>
+        </div>
+      </div>
+      <p class="modal-description" id="modal-description"></p>
+      <div class="modal-info-grid" id="modal-info-grid"></div>
+      <h4 class="modal-section-title">✦ Benefits</h4>
+      <div class="modal-benefits-list" id="modal-benefits-list"></div>
+      <h4 class="modal-section-title">📿 How to Wear</h4>
+      <div class="modal-wearing-grid" id="modal-wearing-grid"></div>
+      <p class="text-muted" id="modal-zodiac-signs" style="margin-top: var(--sp-lg); text-align: center; font-size: var(--fs-small);"></p>
+      <div class="modal-mantra" style="margin-top: var(--sp-xl);">
+        <div class="mantra-label">Mantra</div>
+        <div class="mantra-text" id="modal-mantra-text"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ Footer ════════════ -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span>💎</span>
+          <span class="footer-logo-text">Humara Pandit</span>
+        </div>
+        <p class="footer-tagline">Aligning your life with the cosmos, one gemstone at a time.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a class="footer-link" data-navigate="hero">Home</a>
+        <a class="footer-link" data-navigate="form">Get Recommendation</a>
+        <a class="footer-link" data-navigate="explorer">Explore Gemstones</a>
+        <a class="footer-link" data-navigate="about">About</a>
+      </div>
+      <div class="footer-links">
+        <h4>Gemstones</h4>
+        <a class="footer-link" onclick="ExplorerController.openModal('Ruby')">Ruby (Manik)</a>
+        <a class="footer-link" onclick="ExplorerController.openModal('Pearl')">Pearl (Moti)</a>
+        <a class="footer-link" onclick="ExplorerController.openModal('Emerald')">Emerald (Panna)</a>
+        <a class="footer-link" onclick="ExplorerController.openModal('Yellow Sapphire')">Yellow Sapphire</a>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a class="footer-link" data-navigate="about">Vedic Astrology</a>
+        <a class="footer-link" data-navigate="about">Navaratna System</a>
+        <a class="footer-link" data-navigate="about">Compatibility Guide</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Humara Pandit. Built with ❤️ and Vedic wisdom. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ════════════ Scripts ════════════ -->
+  <script src="js/data.js?v=2"></script>
+  <script src="js/astrology.js?v=2"></script>
+  <script src="js/particles.js?v=2"></script>
+  <script src="js/effects.js?v=2"></script>
+  <script src="js/form.js?v=2"></script>
+  <script src="js/results.js?v=2"></script>
+  <script src="js/explorer.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+
+</body>
+</html>

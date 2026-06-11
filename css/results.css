@@ -1,0 +1,462 @@
+/* ============================================
+   HUMARA PANDIT — Results Section
+   ============================================ */
+
+.results-section {
+  padding-top: 80px;
+  padding-bottom: var(--sp-4xl);
+}
+
+.results-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ─── Analysis Animation Screen ─── */
+.analysis-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: var(--sp-2xl);
+}
+
+.orbit-system {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, var(--gold-light), var(--gold-dark));
+  box-shadow: 0 0 30px var(--gold-glow), 0 0 60px var(--gold-glow);
+  animation: scaleBreath 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-full);
+}
+
+.orbit-ring:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+  animation: orbitRing 6s linear infinite;
+}
+
+.orbit-ring:nth-child(3) {
+  width: 170px;
+  height: 170px;
+  margin: -85px 0 0 -85px;
+  border-color: rgba(168, 85, 247, 0.12);
+  animation: orbitRingReverse 9s linear infinite;
+}
+
+.orbit-ring:nth-child(4) {
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+  border-color: rgba(212, 175, 55, 0.08);
+  animation: orbitRing 12s linear infinite;
+}
+
+.orbit-planet {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+}
+
+.orbit-ring:nth-child(2) .orbit-planet {
+  background: var(--gem-ruby);
+  box-shadow: 0 0 10px rgba(224, 17, 95, 0.5);
+}
+
+.orbit-ring:nth-child(3) .orbit-planet {
+  background: var(--gem-emerald);
+  box-shadow: 0 0 10px rgba(80, 200, 120, 0.5);
+  width: 10px;
+  height: 10px;
+  top: -5px;
+  margin-left: -5px;
+}
+
+.orbit-ring:nth-child(4) .orbit-planet {
+  background: var(--gem-blue-sapphire);
+  box-shadow: 0 0 10px rgba(40, 86, 212, 0.5);
+  width: 8px;
+  height: 8px;
+  top: -4px;
+  margin-left: -4px;
+}
+
+.analysis-text {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+}
+
+.analysis-sub-text {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  max-width: 350px;
+  margin-top: var(--sp-sm);
+}
+
+/* ─── Results Content ─── */
+.results-content {
+  display: none;
+}
+
+.results-content.visible {
+  display: block;
+  animation: fadeIn 0.8s var(--ease-out);
+}
+
+/* ─── Results Header ─── */
+.results-header {
+  text-align: center;
+  margin-bottom: var(--sp-3xl);
+}
+
+.results-greeting {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-sm);
+}
+
+.results-title {
+  font-size: var(--fs-h1);
+  margin-bottom: var(--sp-md);
+}
+
+/* ─── Primary Gemstone Hero Card ─── */
+.gemstone-hero {
+  padding: var(--sp-3xl);
+  margin-bottom: var(--sp-2xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.gemstone-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    var(--gem-glow-color, rgba(212, 175, 55, 0.05)) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.gemstone-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-lg);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-xl);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: var(--sp-xl);
+}
+
+.gemstone-hero-orb {
+  margin: 0 auto var(--sp-xl);
+  animation: gemReveal 1s var(--ease-out) 0.3s backwards,
+             gemGlow 3s ease-in-out 1.3s infinite;
+}
+
+.gemstone-hero-name {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  margin-bottom: var(--sp-xs);
+}
+
+.gemstone-hero-hindi {
+  font-family: var(--font-hindi);
+  font-size: var(--fs-h3);
+  color: var(--gold-light);
+  margin-bottom: var(--sp-md);
+}
+
+.gemstone-hero-planet {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+  margin-bottom: var(--sp-xl);
+}
+
+.gemstone-hero-planet .planet-symbol {
+  font-size: 1.4rem;
+}
+
+.gemstone-hero-description {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: var(--fs-body);
+}
+
+/* ─── Info Grid (Zodiac, Element, Chakra) ─── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-2xl);
+}
+
+.info-card {
+  padding: var(--sp-lg);
+  text-align: center;
+}
+
+.info-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--sp-sm);
+  display: block;
+}
+
+.info-card-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-xs);
+}
+
+.info-card-value {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--text-primary);
+}
+
+/* ─── Benefits List ─── */
+.benefits-section {
+  margin-bottom: var(--sp-2xl);
+}
+
+.section-title {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.section-title-icon {
+  font-size: 1.3rem;
+}
+
+.benefits-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-sm);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  transition: background var(--t-fast);
+}
+
+.benefit-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.benefit-icon {
+  color: var(--gold);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  color: var(--text-secondary);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+/* ─── Wearing Instructions ─── */
+.wearing-section {
+  margin-bottom: var(--sp-2xl);
+}
+
+.wearing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-md);
+}
+
+.wearing-item {
+  padding: var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.wearing-item-icon {
+  font-size: 1.4rem;
+  margin-bottom: var(--sp-xs);
+}
+
+.wearing-item-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.wearing-item-value {
+  font-size: var(--fs-small);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ─── Mantra Section ─── */
+.mantra-card {
+  padding: var(--sp-xl);
+  text-align: center;
+  margin-bottom: var(--sp-2xl);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.mantra-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--sp-md);
+}
+
+.mantra-text {
+  font-family: var(--font-hindi);
+  font-size: var(--fs-h2);
+  color: var(--gold-light);
+  line-height: 1.6;
+}
+
+.mantra-transliteration {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  margin-top: var(--sp-sm);
+  font-style: italic;
+}
+
+/* ─── Secondary Gemstone ─── */
+.secondary-section {
+  margin-bottom: var(--sp-2xl);
+}
+
+.secondary-card {
+  padding: var(--sp-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xl);
+}
+
+.secondary-card .gemstone-orb {
+  flex-shrink: 0;
+}
+
+.secondary-info h4 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-xs);
+}
+
+.secondary-info p {
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+.secondary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-sm);
+}
+
+/* ─── Action Buttons ─── */
+.results-actions {
+  display: flex;
+  gap: var(--sp-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--sp-2xl);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-sm);
+  }
+
+  .wearing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gemstone-hero {
+    padding: var(--sp-2xl) var(--sp-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-actions {
+    flex-direction: column;
+  }
+
+  .results-actions .btn {
+    width: 100%;
+  }
+}
