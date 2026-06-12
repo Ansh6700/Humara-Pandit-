@@ -1,8 +1,3 @@
-/* ============================================
-   HUMARA PANDIT — Interactive Particle System
-   Canvas-based cosmic background with mouse
-   interaction and dynamic star connections
-   ============================================ */
 
 const ParticleSystem = (() => {
 
@@ -104,15 +99,12 @@ const ParticleSystem = (() => {
 
     const time = Date.now() * 0.001;
 
-    // Update and draw particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
-      // Pulse alpha
       p.alpha = p.baseAlpha + Math.sin(time * p.pulseSpeed * 60 + p.pulseOffset) * 0.15;
       p.size = p.baseSize + Math.sin(time * p.pulseSpeed * 40 + p.pulseOffset) * 0.4;
 
-      // Mouse repulsion
       const dx = p.x - mouse.x;
       const dy = p.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -126,24 +118,20 @@ const ParticleSystem = (() => {
         p.size = p.baseSize + force * 2;
       }
 
-      // Move
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap around edges
       if (p.x < -10) p.x = canvas.width + 10;
       if (p.x > canvas.width + 10) p.x = -10;
       if (p.y < -10) p.y = canvas.height + 10;
       if (p.y > canvas.height + 10) p.y = -10;
 
-      // Draw particle
       const color = p.colorTemplate.replace('alpha', p.alpha.toFixed(2));
       ctx.beginPath();
       ctx.arc(p.x, p.y, Math.max(0.5, p.size), 0, Math.PI * 2);
       ctx.fillStyle = color;
       ctx.fill();
 
-      // Glow effect for larger particles
       if (p.baseSize > 2) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
@@ -153,7 +141,6 @@ const ParticleSystem = (() => {
       }
     }
 
-    // Draw connections
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const a = particles[i];

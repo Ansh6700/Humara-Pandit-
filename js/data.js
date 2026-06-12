@@ -1,9 +1,3 @@
-/* ============================================
-   HUMARA PANDIT — Astrology Data
-   Complete Vedic astrology dataset for
-   gemstone recommendations
-   ============================================ */
-
 const AstrologyData = (() => {
 
   /* ─────────── Zodiac Signs ─────────── */

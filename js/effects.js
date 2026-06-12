@@ -1,8 +1,3 @@
-/* ============================================
-   HUMARA PANDIT — Premium Effects
-   3D tilt, scroll reveal, counters, share,
-   zodiac wheel, localStorage persistence
-   ============================================ */
 
 const Effects = (() => {
 
@@ -70,8 +65,7 @@ const Effects = (() => {
       function update(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
+          const eased = 1 - Math.pow(1 - progress, 3);
         counter.textContent = Math.round(target * eased);
 
         if (progress < 1) {
@@ -97,13 +91,11 @@ const Effects = (() => {
 
     let svg = `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" class="zodiac-wheel-svg">`;
 
-    // Outer ring glow
     svg += `<defs>
       <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>`;
 
-    // Background circle
     svg += `<circle cx="${center}" cy="${center}" r="${outerR}" fill="none" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>`;
     svg += `<circle cx="${center}" cy="${center}" r="${innerR}" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/>`;
 
@@ -114,7 +106,6 @@ const Effects = (() => {
 
       const isActive = sign.name === activeSign;
 
-      // Segment path
       const x1o = center + outerR * Math.cos(startAngle);
       const y1o = center + outerR * Math.sin(startAngle);
       const x2o = center + outerR * Math.cos(endAngle);
@@ -131,7 +122,6 @@ const Effects = (() => {
         fill="${fillColor}" stroke="${strokeColor}" stroke-width="${isActive ? 1.5 : 0.5}"
         ${isActive ? 'filter="url(#glow)"' : ''}/>`;
 
-      // Symbol text
       const tx = center + textR * Math.cos(midAngle);
       const ty = center + textR * Math.sin(midAngle);
 
@@ -139,14 +129,11 @@ const Effects = (() => {
         font-size="${isActive ? '16' : '13'}" fill="${isActive ? '#f0d78c' : 'rgba(240,235,227,0.5)'}"
         font-weight="${isActive ? '700' : '400'}">${sign.symbol}</text>`;
 
-      // Divider lines
       svg += `<line x1="${x1o}" y1="${y1o}" x2="${x2i}" y2="${y2i}" stroke="rgba(212,175,55,0.08)" stroke-width="0.5"/>`;
     });
 
-    // Center circle
     svg += `<circle cx="${center}" cy="${center}" r="28" fill="rgba(12,12,35,0.9)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>`;
 
-    // Center sign
     if (activeSign) {
       const sign = signs.find(s => s.name === activeSign);
       if (sign) {
@@ -180,10 +167,8 @@ const Effects = (() => {
         try {
           await navigator.share(shareData);
         } catch (e) {
-          // User cancelled
         }
       } else {
-        // Fallback: copy to clipboard
         try {
           await navigator.clipboard.writeText(shareData.text);
           showToast('Copied to clipboard! 📋');
@@ -228,7 +213,6 @@ const Effects = (() => {
       };
       localStorage.setItem('humaraPandit_lastRecommendation', JSON.stringify(data));
     } catch (e) {
-      // Storage full or disabled
     }
   }
 
@@ -363,7 +347,6 @@ const Effects = (() => {
     initScrollReveal();
     initShare();
 
-    // Animate hero counters when hero is visible
     const heroObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {

@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/index.css?v=2">
   <link rel="stylesheet" href="css/animations.css?v=2">
   <link rel="stylesheet" href="css/hero.css?v=2">
@@ -21,7 +20,6 @@
   <link rel="stylesheet" href="css/results.css?v=2">
   <link rel="stylesheet" href="css/explorer.css?v=2">
 
-  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
 </head>
 <body>
@@ -57,7 +55,6 @@
   <!-- ════════════ HERO SECTION ════════════ -->
   <section id="hero-section" class="section active">
     <div class="hero">
-      <!-- Floating decorative gems -->
       <div class="hero-floating-gems" aria-hidden="true">
         <div class="hero-gem"></div>
         <div class="hero-gem"></div>
@@ -67,13 +64,11 @@
         <div class="hero-gem"></div>
       </div>
 
-      <!-- Brand -->
       <div class="hero-brand">
         <span class="hero-brand-icon">💎</span>
         <div class="hero-brand-name">Humara Pandit</div>
       </div>
 
-      <!-- Heading -->
       <h1 class="hero-title text-gradient">
         Discover the Gemstone That Aligns With Your Stars
       </h1>
@@ -82,14 +77,12 @@
         Ancient Vedic wisdom meets modern insight. Enter your birth details and unveil the Navaratna gemstone destined to amplify your cosmic energy.
       </p>
 
-      <!-- CTA -->
       <div class="hero-cta">
         <button class="btn btn-primary" data-navigate="form" id="hero-cta-btn">
           ✨ Begin Your Journey
         </button>
       </div>
 
-      <!-- Stats -->
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-number">9</div>
@@ -105,7 +98,6 @@
         </div>
       </div>
 
-      <!-- Testimonials -->
       <div class="hero-testimonials reveal-on-scroll">
         <div class="testimonial-card glass">
           <p class="testimonial-text">"The Yellow Sapphire recommendation changed my career trajectory completely. Truly aligned with my Jupiter energy."</p>
@@ -139,7 +131,6 @@
         </div>
       </div>
 
-      <!-- Scroll hint -->
       <div class="hero-scroll-hint">
         <span>Scroll to explore</span>
         <div class="scroll-arrow"></div>
@@ -174,7 +165,6 @@
       <div class="glass-card form-card">
         <form id="birth-form" autocomplete="off">
 
-          <!-- Step 1 -->
           <div class="form-step active" id="step-1">
             <div class="form-step-title">Birth Details</div>
             <div class="form-step-subtitle">Your name and date of birth reveal your zodiac sign</div>
@@ -200,7 +190,6 @@
             </div>
           </div>
 
-          <!-- Step 2 -->
           <div class="form-step" id="step-2">
             <div class="form-step-title">Your Preferences</div>
             <div class="form-step-subtitle">Help us refine your recommendation</div>
@@ -263,7 +252,6 @@
         </form>
       </div>
 
-      <!-- Last Recommendation Banner -->
       <div class="last-rec-banner glass" id="last-rec-banner" style="display:none;">
         <span class="last-rec-icon">🕐</span>
         <div class="last-rec-text">
@@ -278,7 +266,6 @@
   <section id="results-section" class="section results-section">
     <div class="results-wrapper">
 
-      <!-- Analysis Animation -->
       <div class="analysis-screen" id="analysis-screen" style="display: none;">
         <div class="orbit-system">
           <div class="orbit-center"></div>
@@ -295,7 +282,6 @@
         </div>
       </div>
 
-      <!-- Results Content -->
       <div id="results-content" class="results-content">
 
         <div class="results-header">
@@ -304,15 +290,12 @@
           <div class="divider"></div>
         </div>
 
-        <!-- Zodiac Wheel + Gemstone Hero side-by-side -->
         <div class="results-hero-grid">
-          <!-- Zodiac Wheel -->
           <div class="zodiac-wheel-container reveal-on-scroll">
             <h3 class="zodiac-wheel-title">Your Zodiac Position</h3>
             <div id="zodiac-wheel" class="zodiac-wheel"></div>
           </div>
 
-          <!-- Primary Gemstone -->
           <div class="glass-card gemstone-hero">
             <div class="gemstone-hero-badge">
               <span>✨</span> Primary Recommendation
@@ -328,7 +311,6 @@
           </div>
         </div>
 
-        <!-- Info Grid -->
         <div class="info-grid reveal-on-scroll">
           <div class="glass info-card">
             <span class="info-card-icon" id="info-zodiac-icon"></span>
@@ -347,7 +329,6 @@
           </div>
         </div>
 
-        <!-- Benefits -->
         <div class="benefits-section reveal-on-scroll">
           <h3 class="section-title">
             <span class="section-title-icon">✦</span>
@@ -356,7 +337,6 @@
           <div class="benefits-list" id="benefits-list"></div>
         </div>
 
-        <!-- Wearing Instructions -->
         <div class="wearing-section reveal-on-scroll">
           <h3 class="section-title">
             <span class="section-title-icon">📿</span>
@@ -365,14 +345,12 @@
           <div class="wearing-grid" id="wearing-grid"></div>
         </div>
 
-        <!-- Mantra -->
         <div class="glass-card mantra-card reveal-on-scroll">
           <div class="mantra-label">Energization Mantra — Chant 108 Times</div>
           <div class="mantra-text" id="mantra-hindi"></div>
           <div class="mantra-transliteration" id="mantra-translit"></div>
         </div>
 
-        <!-- Gemstone Compatibility -->
         <div class="compatibility-section reveal-on-scroll">
           <h3 class="section-title">
             <span class="section-title-icon">🔗</span>
@@ -381,7 +359,6 @@
           <div id="compatibility-container"></div>
         </div>
 
-        <!-- Secondary Gemstone -->
         <div class="secondary-section reveal-on-scroll" id="secondary-section">
           <h3 class="section-title">
             <span class="section-title-icon">🔄</span>
@@ -397,14 +374,12 @@
           </div>
         </div>
 
-        <!-- Actions -->
         <div class="results-actions">
           <button class="btn btn-ghost" data-navigate="form">🔄 Try Again</button>
           <button class="btn btn-secondary" id="btn-share">📤 Share Results</button>
           <button class="btn btn-primary" data-navigate="explorer">💎 Explore All Gemstones</button>
         </div>
 
-        <!-- Certified Badge -->
         <div class="disclaimer reveal-on-scroll" style="border-color: rgba(80,200,120,0.15); background: rgba(80,200,120,0.03);">
           <p>✅ <strong>Certified Recommendations:</strong> All gemstone suggestions are curated and verified by certified Vedic astrologers (Jyotish Acharyas) following authentic Ratna Shastra principles and traditional Navagraha gemstone mapping.</p>
         </div>
@@ -474,7 +449,6 @@
         </div>
       </div>
 
-      <!-- Navagraha Planets Display -->
       <div class="navagraha-section reveal-on-scroll">
         <h3 class="text-center" style="margin-bottom: var(--sp-2xl); font-size: var(--fs-h2);">
           The Nine Celestial Bodies
