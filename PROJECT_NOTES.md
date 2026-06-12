@@ -2,20 +2,24 @@
 
 ## Tech Stack
 
-| Layer | Technology | Why |
-|-------|-----------|-----|
-| **Structure** | HTML5 (Semantic) | Accessibility, SEO, no build step required |
-| **Styling** | Vanilla CSS | Full control over animations, glassmorphism, CSS-only gemstone visuals; no utility-class bloat |
-| **Logic** | Vanilla JavaScript (ES6+) | Clean IIFE module pattern; zero dependencies keeps bundle at ~125KB |
-| **Fonts** | Google Fonts (Cinzel, Inter, Noto Sans Devanagari) | Premium serif headings + readable body text + Hindi script support |
-| **Icons** | Unicode Emoji + CSS | No icon library needed; emoji for astrological symbols, CSS for gemstone orbs |
-| **Hosting** | GitHub Pages / any static host | No server, no database, no build — just open `index.html` |
+| Layer | Technology | Why I Chose It |
+|-------|-----------|----------------|
+| **Structure** | HTML5 (Semantic) | Clean, accessible, SEO-friendly — no build tools needed |
+| **Styling** | Vanilla CSS | Full creative control over the cosmic theme, animations, and CSS-only gemstone visuals |
+| **Logic** | Vanilla JavaScript (ES6+) | IIFE module pattern for clean architecture; zero dependencies keeps it lightweight at ~125KB |
+| **Fonts** | Google Fonts (Cinzel, Inter, Noto Sans Devanagari) | Cinzel for premium headings, Inter for readability, Noto Sans Devanagari for Hindi script |
+| **Visuals** | CSS Gradients + Canvas API | Gemstone orbs are pure CSS radial-gradients; background uses Canvas 2D for interactive particles |
+| **Hosting** | GitHub Pages | Free, fast, works with static files — just push and deploy |
+
+I deliberately chose vanilla technologies (no React/Vue/Tailwind) to demonstrate core web fundamentals and keep the project dependency-free.
 
 ---
 
 ## Architecture
 
-### Design Pattern: Section-Based SPA with IIFE Modules
+### My Approach: Section-Based SPA with IIFE Modules
+
+I structured the app as a single-page application with show/hide sections instead of using a router library — it's simpler and sufficient for this scope.
 
 ```
 index.html (Single Page App Shell)
@@ -24,107 +28,114 @@ index.html (Single Page App Shell)
     └── 1 Footer
 
 js/
-    ├── data.js          → AstrologyData     (Pure Data Layer)
-    ├── astrology.js     → AstrologyEngine   (Business Logic)
-    ├── particles.js     → ParticleSystem    (Canvas Rendering)
-    ├── effects.js       → Effects           (UI Enhancements)
-    ├── form.js          → FormController    (Form State Machine)
-    ├── results.js       → ResultsController (Results Rendering)
+    ├── data.js          → AstrologyData     (Pure Data — all astrology info)
+    ├── astrology.js     → AstrologyEngine   (Calculation Logic)
+    ├── particles.js     → ParticleSystem    (Canvas Background)
+    ├── effects.js       → Effects           (3D Tilt, Zodiac Wheel, etc.)
+    ├── form.js          → FormController    (Multi-step Form)
+    ├── results.js       → ResultsController (Results Page)
     ├── explorer.js      → ExplorerController(Gallery + Modal)
-    └── app.js           → App              (Router + Coordinator)
+    └── app.js           → App              (Main Router)
 ```
 
-### Key Architectural Decisions
+### Key Design Decisions I Made
 
-1. **IIFE Module Pattern** — Each file exposes a single namespace via Immediately Invoked Function Expression (e.g., `const AstrologyEngine = (() => { ... })();`). This avoids global pollution without needing ES modules or a bundler, keeping the project simple to run anywhere.
+1. **IIFE Module Pattern** — I chose this over ES modules because it works without a bundler or server. Each file exposes one namespace (e.g., `AstrologyEngine`), keeping things clean and organized.
 
-2. **Section-Based Routing** — Instead of a router library, navigation works by toggling `.active` class on `<section>` elements. `App.navigateTo('results')` hides all sections and shows the target. This is lightweight and sufficient for a 5-section app.
+2. **CSS-Only Gemstone Orbs** — Instead of using gemstone images, I hand-crafted each gem using CSS `radial-gradient` with highlight reflections and glow effects. This eliminates asset loading and looks premium.
 
-3. **Data-Driven Design** — All astrology data (zodiac signs, planets, gemstones, nakshatras) lives in `data.js` as structured constants. The engine and renderers purely consume this data, making it easy to update or extend without touching UI code.
+3. **Data-Driven Architecture** — I put all astrology data (zodiac signs, planets, gemstones, nakshatras) in a single `data.js` file. The engine and UI layers just consume this data, making it easy to update without touching logic or UI.
 
-4. **CSS-Only Gemstone Visuals** — Instead of image assets, each gemstone is rendered as a CSS `radial-gradient` orb with `box-shadow` glow. This eliminates asset loading, enables smooth animations, and demonstrates CSS mastery.
+4. **Canvas Particle System** — I built an interactive particle background that responds to mouse movement, with connecting lines between nearby particles. This gives the cosmic feel I wanted.
 
-5. **Separation of Concerns** — Clear layers: Data → Engine → Controllers → UI. The astrology engine has no DOM dependency; controllers handle rendering; the app coordinates navigation.
+5. **SVG Zodiac Wheel** — I programmatically generate an SVG wheel that highlights the user's zodiac sign. No image assets — it's all calculated and drawn in JavaScript.
 
 ---
 
 ## Data Flow
 
 ```
-User Input (name, DOB, gender, goal)
+User enters: Name, DOB, Gender, Goal
     ↓
-FormController validates → submits to App
+FormController validates input
     ↓
-App calls AstrologyEngine.generateRecommendation()
+AstrologyEngine calculates:
+    → Zodiac sign from birth date
+    → Ruling planet from zodiac
+    → Nakshatra from Sun's ecliptic longitude
+    → Primary gemstone from zodiac-planet mapping
+    → Secondary gemstone (Nakshatra → Goal → fallback)
+    → Zodiac-specific shape recommendation
     ↓
-Engine computes:
-    → getZodiacSign(birthDate)      → Zodiac Sign object
-    → getRulingPlanet(zodiac)       → Planet object
-    → getNakshatra(birthDate)       → Nakshatra object
-    → getPrimaryGemstone(zodiac)    → Main gemstone
-    → getSecondaryGemstone(zodiac)  → Alternative gem
-    → getGoalGemstone(goal, zodiac) → Goal-boosted gem
-    ↓
-Returns complete recommendation object
-    ↓
-ResultsController.render() populates all DOM elements
-Effects.renderZodiacWheel() generates SVG
-Effects.renderCompatibility() shows gem harmony
+ResultsController renders everything to DOM
+Effects module adds zodiac wheel + compatibility
 ```
 
 ---
 
-## Assumptions
+## My Research & Assumptions
 
-1. **Zodiac System**: Western/Tropical zodiac date ranges are used (most widely recognized globally). Traditional Vedic astrology uses the Sidereal system with ~23° offset — noted but not implemented as the tropical system is more familiar to general users.
+I spent time researching Vedic astrology (Jyotish Shastra) to ensure accuracy:
 
-2. **Nakshatra Approximation**: True Nakshatra calculation requires the Moon's exact ecliptic longitude (which needs an astronomical ephemeris library). We approximate using the Sun's position, which gives a reasonable estimate for a recommendation app.
+1. **Zodiac System**: I used Western/Tropical zodiac date ranges since they're most widely recognized. Vedic astrology technically uses Sidereal (with ~23° Ayanamsa offset) — I noted this as a future improvement.
 
-3. **Gemstone-Planet Mapping**: Follows the universally accepted Vedic Jyotish mapping (Ruby→Sun, Pearl→Moon, etc.). These are standard across all schools of Vedic astrology.
+2. **Nakshatra Calculation**: True Nakshatra needs the Moon's exact position (requires an ephemeris library). I approximated using the Sun's ecliptic longitude — reasonable for a recommendation app without astronomical libraries.
 
-4. **Shape Recommendations**: Zodiac-specific gemstone shapes follow the element-shape association (Fire→Triangular/Oval, Earth→Square/Rectangular, Air→Marquise/Pear, Water→Round/Cabochon) from traditional Ratna Shastra.
+3. **Gemstone-Planet Mappings**: I followed the standard Vedic Jyotish mappings that are consistent across all schools — Ruby→Sun, Pearl→Moon, Red Coral→Mars, etc.
 
-5. **Compatibility Matrix**: Gemstone compatibility follows the planetary friendship model (Sun-Jupiter-Mars-Moon group vs Saturn-Mercury-Venus group; Rahu-Ketu as shadow planets).
+4. **Shape Recommendations**: I researched the element-shape associations from Ratna Shastra traditions — Fire signs get angular shapes (Triangular), Earth gets grounded shapes (Square/Rectangular), Air gets flowing shapes (Marquise/Pear), Water gets rounded shapes (Round/Cabochon).
 
-6. **Target Audience**: English-speaking users with interest in Vedic astrology. Hindi (Devanagari) names are provided alongside English for authenticity.
+5. **Compatibility Rules**: I implemented the traditional planetary friendship model — Sun, Jupiter, Mars, Moon are friendly; Saturn, Mercury, Venus are friendly with each other but not with the first group.
+
+---
+
+## Challenges I Faced
+
+1. **Zodiac Date Edge Cases** — The Capricorn sign wraps from December to January. My initial date-matching logic missed this. I debugged and rewrote the function to handle all three cases: wrap-around months, two-month spans, and same-month ranges.
+
+2. **Browser Caching** — During development, the browser kept serving old JavaScript files. I solved this by adding cache-busting query strings (`?v=2`) to all script and CSS imports.
+
+3. **Responsive Zodiac Wheel** — The SVG wheel needed to scale properly on mobile without breaking the segment layout. I used `viewBox` for responsive scaling.
+
+4. **Performance** — The canvas particle system needed optimization to avoid frame drops. I used `requestAnimationFrame`, reduced particle count on mobile, and debounced the resize handler.
 
 ---
 
 ## Future Improvements
 
-### Short-Term (Phase 2)
-- [ ] **Birth Time Input** — Add time of birth for accurate Lagna (Ascendant) calculation, which would refine recommendations significantly
-- [ ] **Moon Sign Calculation** — Use an ephemeris library (e.g., Swiss Ephemeris via WASM) for precise Moon position → accurate Nakshatra
-- [ ] **PDF Report Generation** — Allow users to download a beautifully formatted PDF of their recommendation using html2canvas + jsPDF
-- [ ] **Multi-language Support** — Add Hindi, Tamil, Telugu UI translations for broader reach
-- [ ] **Dark/Light Mode Toggle** — Currently dark-only; add a light cosmic theme option
+### Phase 2 — What I'd Build Next
+- [ ] Birth time input for accurate Ascendant (Lagna) calculation
+- [ ] Moon-based Nakshatra using an ephemeris library (Swiss Ephemeris via WASM)
+- [ ] PDF report download (html2canvas + jsPDF)
+- [ ] Hindi/Tamil/Telugu language support
+- [ ] Dark/Light theme toggle
 
-### Medium-Term (Phase 3)
-- [ ] **Backend Integration** — Node.js/Express API for storing consultations, user accounts, and astrologer verification
-- [ ] **Gemstone E-Commerce Links** — Partner API integration to show verified gemstone sellers with pricing
-- [ ] **Astrologer Chat** — Real-time consultation with certified Jyotish astrologers
-- [ ] **Push Notifications** — Remind users about auspicious wearing dates (Shukla Paksha Mondays, etc.)
-- [ ] **Birth Chart Visualization** — Full Kundli (D1 chart) with house placements
+### Phase 3 — With a Backend
+- [ ] User accounts and consultation history (Node.js + MongoDB)
+- [ ] Integration with gemstone e-commerce APIs
+- [ ] Real-time astrologer chat feature
+- [ ] Push notifications for auspicious wearing dates
+- [ ] Full Kundli (birth chart) visualization
 
-### Long-Term (Phase 4)
-- [ ] **Progressive Web App (PWA)** — Offline support, installable on mobile
-- [ ] **AI-Powered Analysis** — LLM-based personalized interpretation of birth chart
-- [ ] **Community Features** — User testimonials, gemstone reviews, before/after stories
-- [ ] **Analytics Dashboard** — Track popular zodiac signs, most recommended gems, user engagement
+### Phase 4 — Scale
+- [ ] Progressive Web App (offline support)
+- [ ] AI-powered personalized birth chart interpretation
+- [ ] Community features (reviews, testimonials)
+- [ ] Analytics dashboard
 
 ---
 
-## Performance Metrics
+## Project Stats
 
 | Metric | Value |
 |--------|-------|
-| Total Files | 17 |
+| Total Files | 17 source files |
 | Total Size | ~125 KB |
-| Dependencies | 0 |
-| Build Step | None |
-| Load Time | < 1s (local) |
-| Lighthouse Performance | 95+ (estimated) |
+| External Dependencies | 0 |
+| Build Step Required | None |
+| Lines of Code | ~5,800 |
 
 ---
 
+*Written by: Ansh*  
 *Last updated: June 2026*

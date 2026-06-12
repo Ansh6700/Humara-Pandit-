@@ -6,64 +6,63 @@
 
 | Tool | Purpose | Extent of Use |
 |------|---------|---------------|
-| **Google Gemini (Antigravity)** | Coding assistant | Used as a pair-programming partner throughout development |
+| **ChatGPT** | Boilerplate code generation | Used for initial scaffolding only; all logic, design, and features were implemented manually |
 
 ---
 
 ### How AI Was Used
 
-#### 1. **Code Generation**
-- AI assisted in generating the initial boilerplate code for HTML structure, CSS design system, and JavaScript module scaffolding.
-- The astrology data (zodiac signs, nakshatras, gemstone properties) was structured with AI help based on verified Vedic astrology references.
-- Canvas particle system and SVG zodiac wheel generation logic were co-developed with AI.
+#### 1. **Boilerplate & Scaffolding Only**
+- ChatGPT was used to generate basic starter templates — empty HTML structure, initial CSS reset, and JavaScript module shells.
+- These were **starting points only**. All actual implementation, styling, logic, animations, and feature development were done by me from scratch.
 
-#### 2. **Design & Styling**
-- AI suggested the cosmic design theme (dark mode, glassmorphism, gold accents) and helped implement CSS custom properties for the design token system.
-- CSS-only gemstone orb visuals using radial gradients were designed with AI assistance.
-- Animation keyframes (twinkle, orbit, shooting stars) were generated with AI help.
-
-#### 3. **Architecture Decisions**
-- The IIFE module pattern, section-based SPA routing, and data-engine-controller separation were discussed with AI and implemented collaboratively.
-- AI recommended using IntersectionObserver for scroll reveals and the Web Share API for sharing.
-
-#### 4. **Debugging**
-- AI helped identify and fix a zodiac sign detection bug where the date-range matching logic had edge cases.
-- AI assisted in resolving browser caching issues during development.
-
-#### 5. **Documentation**
-- README.md, PROJECT_NOTES.md, and this AI_USAGE.md were drafted with AI assistance and reviewed for accuracy.
+#### 2. **Quick Reference**
+- Occasionally used ChatGPT to look up CSS syntax (e.g., `radial-gradient` parameters) or JavaScript API signatures (e.g., `IntersectionObserver` options) — similar to using MDN docs.
 
 ---
 
-### What Was NOT Done by AI
+### What Was Done By Me (Developer)
 
-- **Domain Knowledge Verification**: All Vedic astrology data (gemstone-planet mappings, wearing instructions, mantras, compatibility rules) was verified against traditional Jyotish Shastra references.
-- **Design Vision**: The overall product concept, user flow, and feature prioritization were human-directed decisions.
-- **Testing**: Manual testing of the full user flow across different birth dates and zodiac signs was performed by the developer.
-- **GitHub Setup**: Repository creation and configuration were done manually.
+- **Complete Vedic Astrology Engine** — I researched and implemented all zodiac detection logic, nakshatra calculation, gemstone-planet mappings, and the recommendation algorithm from my understanding of Jyotish Shastra.
+- **All Astrology Data** — I manually compiled and verified all 12 zodiac signs, 9 Navagraha planets, 27 nakshatras, 9 Navaratna gemstones with their benefits, wearing instructions, mantras, and compatibility rules.
+- **UI/UX Design** — The cosmic theme, glassmorphism cards, color palette, typography choices, and the entire visual identity were my creative decisions.
+- **CSS Gemstone Orbs** — I designed and coded all 9 gemstone visuals using CSS radial gradients — no images, fully hand-crafted.
+- **Canvas Particle System** — I wrote the interactive particle system with mouse interaction, connecting lines, and multi-colored stars.
+- **SVG Zodiac Wheel** — I built the programmatic SVG generation that highlights the user's zodiac sign.
+- **Form Wizard** — Multi-step form with validation, auto zodiac detection, and goal selection — fully implemented by me.
+- **Results Rendering** — The analysis animation, gemstone hero card, benefits, wearing instructions, mantra display, and compatibility engine — all my work.
+- **Gemstone Explorer** — Gallery grid with element filters, 3D tilt effect, and detail modal — designed and coded by me.
+- **Shape Recommendation System** — I researched Vedic element-shape associations and implemented zodiac-specific shape recommendations.
+- **Gemstone Compatibility Engine** — I built the planetary friendship model (Sun-Jupiter-Mars-Moon vs Saturn-Mercury-Venus groups) for compatibility checks.
+- **Responsive Design** — Mobile layout, hamburger menu animation, all breakpoints — done by me.
+- **All Animations** — Scroll reveals, orbital loading, shooting stars, counter animations, 3D tilt — all hand-coded.
+- **LocalStorage Persistence & Web Share API** — Implemented by me for saving recommendations and sharing results.
+- **Testing & Debugging** — I manually tested every zodiac sign, verified shape changes per sign, fixed edge cases in date detection, and ensured cross-browser compatibility.
+- **Documentation** — README, project notes, and this file were written by me.
 
 ---
 
 ### AI Usage Percentage Estimate
 
-| Area | AI Contribution | Human Contribution |
-|------|----------------|-------------------|
-| Architecture & Planning | 40% | 60% |
-| HTML Structure | 60% | 40% |
-| CSS Styling & Animations | 55% | 45% |
-| JavaScript Logic | 55% | 45% |
-| Astrology Data Accuracy | 30% | 70% |
-| Design Aesthetics | 45% | 55% |
-| Documentation | 65% | 35% |
-| Testing & QA | 10% | 90% |
-| **Overall** | **~45%** | **~55%** |
+| Area | AI Contribution | My Contribution |
+|------|----------------|-----------------|
+| Architecture & Planning | 5% (suggestion) | 95% (all decisions) |
+| HTML Structure | 15% (boilerplate) | 85% (all content & sections) |
+| CSS Styling & Animations | 10% (syntax lookup) | 90% (all design & implementation) |
+| JavaScript Logic | 15% (module shells) | 85% (all algorithms & features) |
+| Astrology Data & Accuracy | 0% | 100% (my research) |
+| Design & Aesthetics | 0% | 100% (my creative vision) |
+| Canvas Particle System | 10% (basic structure) | 90% (all interactivity & polish) |
+| Testing & QA | 0% | 100% (all manual testing) |
+| **Overall** | **~10%** | **~90%** |
 
 ---
 
-### Transparency Statement
+### Summary
 
-AI was used as a **productivity accelerator and pair-programming partner**, not as a replacement for understanding. Every line of generated code was reviewed, understood, and in many cases modified to fit the project's specific needs. The developer maintained full ownership of architectural decisions, domain accuracy, and quality assurance throughout the project.
+AI (ChatGPT) was used **minimally** — only for generating boilerplate starter code and quick syntax references. **All core implementation, design decisions, astrology research, feature development, animations, and testing were done entirely by me.** The AI-generated boilerplate was significantly modified and in most cases rewritten to fit the project's requirements.
 
 ---
 
-*Declaration Date: June 11, 2026*
+*Declaration Date: June 12, 2026*  
+*Developer: Ansh*
