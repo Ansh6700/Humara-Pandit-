@@ -1,14 +1,10 @@
-/* ============================================
-   HUMARA PANDIT — Form Wizard Controller
-   ============================================ */
-
 const FormController = (() => {
 
   let currentStep = 1;
   const totalSteps = 2;
   let selectedGoal = null;
 
-  // DOM refs (set on init)
+
   let formEl, steps, progressDots, progressLines;
   let nameInput, dobInput, genderInputs, zodiacPreview;
   let backBtn, nextBtn;
@@ -30,17 +26,17 @@ const FormController = (() => {
     backBtn = document.getElementById('btn-back');
     nextBtn = document.getElementById('btn-next');
 
-    // Events
+
     nextBtn.addEventListener('click', handleNext);
     backBtn.addEventListener('click', handleBack);
     dobInput.addEventListener('change', handleDobChange);
 
-    // Goal selection
+
     document.querySelectorAll('.goal-option').forEach(el => {
       el.addEventListener('click', () => selectGoal(el));
     });
 
-    // Set max date for DOB to today
+
     const today = new Date().toISOString().split('T')[0];
     dobInput.setAttribute('max', today);
 
@@ -50,12 +46,12 @@ const FormController = (() => {
   function showStep(step) {
     currentStep = step;
 
-    // Update steps visibility
+
     steps.forEach((s, i) => {
       s.classList.toggle('active', i + 1 === step);
     });
 
-    // Update progress dots
+
     progressDots.forEach((dot, i) => {
       dot.classList.remove('active', 'completed');
       if (i + 1 === step) {
@@ -65,15 +61,15 @@ const FormController = (() => {
       }
     });
 
-    // Update progress lines
+
     progressLines.forEach((line, i) => {
       line.classList.toggle('filled', i + 1 < step);
     });
 
-    // Show/hide back button
+
     backBtn.classList.toggle('visible', step > 1);
 
-    // Update next button text
+
     if (step === totalSteps) {
       nextBtn.innerHTML = '✨ Discover My Gemstone';
     } else {
@@ -118,7 +114,7 @@ const FormController = (() => {
     if (step === 2) {
       const genderSelected = document.querySelector('input[name="gender"]:checked');
       if (!genderSelected) {
-        // Highlight the radio group
+
         const radioGroup = document.querySelector('.radio-group');
         if (radioGroup) {
           radioGroup.style.outline = '1px solid #ef4444';
@@ -130,7 +126,7 @@ const FormController = (() => {
         return false;
       }
       if (!selectedGoal) {
-        // Flash goal options
+
         document.querySelectorAll('.goal-option').forEach(el => {
           el.style.borderColor = 'rgba(239, 68, 68, 0.4)';
           setTimeout(() => {

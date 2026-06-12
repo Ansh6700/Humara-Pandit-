@@ -1,6 +1,3 @@
-/* ============================================
-   HUMARA PANDIT — Results Renderer
-   ============================================ */
 
 const ResultsController = (() => {
 
@@ -13,7 +10,6 @@ const ResultsController = (() => {
     analysisEl.style.display = 'flex';
     resultsEl.classList.remove('visible');
 
-    // Simulate analysis time with progress updates
     const texts = [
       'Reading the stars...',
       'Mapping your zodiac constellation...',
@@ -30,7 +26,7 @@ const ResultsController = (() => {
       if (i < texts.length) {
         textEl.textContent = texts[i];
         textEl.style.animation = 'none';
-        textEl.offsetHeight; // trigger reflow
+        textEl.offsetHeight;
         textEl.style.animation = 'fadeIn 0.4s ease';
       }
     }, 700);
@@ -51,26 +47,19 @@ const ResultsController = (() => {
     const planet = recommendation.planet;
     const nakshatra = recommendation.nakshatra;
 
-    // Greeting
     const greetingEl = document.getElementById('results-greeting');
     greetingEl.textContent = `Namaste ${recommendation.name}, here is your cosmic alignment`;
 
-    // Primary Gemstone Hero
     renderGemstoneHero(gem);
 
-    // Info Grid
     renderInfoGrid(zodiac, nakshatra, gem);
 
-    // Benefits
     renderBenefits(gem);
 
-    // Wearing Instructions
     renderWearing(gem);
 
-    // Mantra
     renderMantra(gem);
 
-    // Secondary Gemstone
     if (altGem && altGem.name !== gem.name) {
       renderSecondary(altGem);
     } else {
@@ -80,37 +69,29 @@ const ResultsController = (() => {
   }
 
   function renderGemstoneHero(gem) {
-    // Orb
     const orbEl = document.getElementById('hero-gem-orb');
     orbEl.className = `gemstone-orb xl gemstone-hero-orb ${gem.cssClass}`;
 
-    // Set glow color for background radial
     const heroCard = document.querySelector('.gemstone-hero');
     heroCard.style.setProperty('--gem-glow-color', `${gem.color}22`);
 
-    // Name & Hindi
     document.getElementById('hero-gem-name').textContent = gem.name;
     document.getElementById('hero-gem-hindi').textContent = gem.hindi;
 
-    // Planet
     document.getElementById('hero-gem-planet-symbol').textContent = gem.planetSymbol;
     document.getElementById('hero-gem-planet-name').textContent =
       `Planet: ${gem.planet} (${AstrologyData.PLANETS[gem.planet].sanskrit})`;
 
-    // Description
     document.getElementById('hero-gem-description').textContent = gem.description;
   }
 
   function renderInfoGrid(zodiac, nakshatra, gem) {
-    // Zodiac
     document.getElementById('info-zodiac-icon').textContent = zodiac.symbol;
     document.getElementById('info-zodiac-value').textContent = `${zodiac.name} (${zodiac.hindi})`;
 
-    // Nakshatra
     document.getElementById('info-nakshatra-icon').textContent = '⭐';
     document.getElementById('info-nakshatra-value').textContent = `${nakshatra.name} (${nakshatra.hindi})`;
 
-    // Element
     const element = AstrologyData.ELEMENTS[gem.element] || AstrologyData.ELEMENTS[zodiac.element];
     document.getElementById('info-element-icon').textContent = element ? element.icon : '✨';
     document.getElementById('info-element-value').textContent = gem.element || zodiac.element;
@@ -152,7 +133,6 @@ const ResultsController = (() => {
 
   function renderMantra(gem) {
     const mantraText = gem.wearing.mantra;
-    // Split into hindi and transliteration parts
     const parts = mantraText.split('(');
     const hindiPart = parts[0].trim();
     const translitPart = parts.length > 1 ? parts[1].replace(')', '').trim() : '';

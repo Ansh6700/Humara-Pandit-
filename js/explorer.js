@@ -1,6 +1,3 @@
-/* ============================================
-   HUMARA PANDIT — Gemstone Explorer
-   ============================================ */
 
 const ExplorerController = (() => {
 
@@ -27,7 +24,6 @@ const ExplorerController = (() => {
       </div>`
     ).join('');
 
-    // Attach click events
     grid.querySelectorAll('.gemstone-card').forEach(card => {
       card.addEventListener('click', () => openModal(card.dataset.gemstone));
       card.addEventListener('keydown', (e) => {
@@ -38,7 +34,6 @@ const ExplorerController = (() => {
       });
     });
 
-    // Set individual glow colors
     grid.querySelectorAll('.gemstone-card').forEach(card => {
       const gemName = card.dataset.gemstone;
       const gem = AstrologyData.GEMSTONES[gemName];
@@ -67,10 +62,8 @@ const ExplorerController = (() => {
     if (filter === 'all') {
       gemstones = AstrologyEngine.getAllGemstones();
     } else if (AstrologyData.PLANETS[filter]) {
-      // Filter by planet
       gemstones = AstrologyEngine.getGemstonesByPlanet(filter);
     } else {
-      // Filter by element
       gemstones = AstrologyEngine.getAllGemstones().filter(g => g.element === filter);
     }
 
@@ -98,7 +91,6 @@ const ExplorerController = (() => {
 
     const overlay = document.getElementById('modal-overlay');
 
-    // Header
     const orbEl = document.getElementById('modal-gem-orb');
     orbEl.className = `gemstone-orb large modal-orb ${gem.cssClass}`;
 
@@ -107,10 +99,8 @@ const ExplorerController = (() => {
     document.getElementById('modal-gem-planet').innerHTML =
       `<span>${gem.planetSymbol}</span> Planet: ${gem.planet} (${AstrologyData.PLANETS[gem.planet].sanskrit})`;
 
-    // Description
     document.getElementById('modal-description').textContent = gem.description;
 
-    // Info grid
     const infoGrid = document.getElementById('modal-info-grid');
     const infos = [
       { label: 'Element', value: gem.element },
@@ -124,7 +114,6 @@ const ExplorerController = (() => {
       </div>`
     ).join('');
 
-    // Benefits
     const benefitsList = document.getElementById('modal-benefits-list');
     benefitsList.innerHTML = gem.benefits.map(b =>
       `<div class="modal-benefit">
@@ -133,7 +122,6 @@ const ExplorerController = (() => {
       </div>`
     ).join('');
 
-    // Wearing instructions
     const wearingGrid = document.getElementById('modal-wearing-grid');
     const w = gem.wearing;
     const wearingItems = [
@@ -151,12 +139,10 @@ const ExplorerController = (() => {
       </div>`
     ).join('');
 
-    // Mantra
     const mantraText = w.mantra;
     const parts = mantraText.split('(');
     document.getElementById('modal-mantra-text').textContent = parts[0].trim();
 
-    // Zodiac signs
     const zodiacEl = document.getElementById('modal-zodiac-signs');
     if (gem.zodiacSigns.length > 0) {
       const signs = gem.zodiacSigns.map(name => {
@@ -169,7 +155,6 @@ const ExplorerController = (() => {
     }
     zodiacEl.style.display = 'block';
 
-    // Show modal
     overlay.classList.add('visible');
     document.body.style.overflow = 'hidden';
   }

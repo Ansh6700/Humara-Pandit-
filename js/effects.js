@@ -65,7 +65,7 @@ const Effects = (() => {
       function update(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - Math.pow(1 - progress, 3);
         counter.textContent = Math.round(target * eased);
 
         if (progress < 1) {
